@@ -53,7 +53,7 @@ public class HandlerExposureTest {
 
         // Committed insert of 10
         try (Transaction tx = Transaction.openRoot()) {
-            helper.assertValueEqual(h.insert(stone, 10, tx), 10L, "inserted amount");
+            helper.assertValueEqual(h.insert(stone, 10, tx), 10, "inserted amount");
             tx.commit();
         }
         helper.assertValueEqual(totalOf(h, stone), 10L, "bin contents after committed insert");
@@ -66,7 +66,7 @@ public class HandlerExposureTest {
 
         // Committed extract of 4 -> 6 remain
         try (Transaction tx = Transaction.openRoot()) {
-            helper.assertValueEqual(h.extract(stone, 4, tx), 4L, "extracted amount");
+            helper.assertValueEqual(h.extract(stone, 4, tx), 4, "extracted amount");
             tx.commit();
         }
         helper.assertValueEqual(totalOf(h, stone), 6L, "bin contents after committed extract");
@@ -111,7 +111,7 @@ public class HandlerExposureTest {
 
         // Committed insert of 2000 mB
         try (Transaction tx = Transaction.openRoot()) {
-            helper.assertValueEqual(h.insert(water, 2_000, tx), 2_000L, "inserted amount");
+            helper.assertValueEqual(h.insert(water, 2_000, tx), 2_000, "inserted amount");
             tx.commit();
         }
         helper.assertValueEqual(totalOf(h, water), 2_000L, "tank contents after committed insert");
@@ -124,7 +124,7 @@ public class HandlerExposureTest {
 
         // Committed extract of 500 mB -> 1500 remain
         try (Transaction tx = Transaction.openRoot()) {
-            helper.assertValueEqual(h.extract(water, 500, tx), 500L, "extracted amount");
+            helper.assertValueEqual(h.extract(water, 500, tx), 500, "extracted amount");
             tx.commit();
         }
         helper.assertValueEqual(totalOf(h, water), 1_500L, "tank contents after committed extract");
